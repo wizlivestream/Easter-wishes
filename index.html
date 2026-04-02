@@ -2,262 +2,593 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TAYLON Brands | Premium Branding Solutions</title>
-    <link rel="stylesheet" href="CSS/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>WizDev | Easter Celebration — Renewal, Joy & Magic</title>
+    <!-- Google Fonts + Font Awesome 6 (free) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(145deg, #fef7ef 0%, #fff4ea 100%);
+            font-family: 'Inter', sans-serif;
+            color: #2e2a28;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Floating animated Easter eggs background */
+        .floating-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+        .floating-egg {
+            position: absolute;
+            font-size: 2rem;
+            opacity: 0.12;
+            animation: floatEgg 18s infinite linear;
+            user-select: none;
+        }
+        @keyframes floatEgg {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% { opacity: 0.12; }
+            90% { opacity: 0.12; }
+            100% {
+                transform: translateY(-20vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 1.5rem 2rem 3rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Header + logo */
+        .site-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 2.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid rgba(194, 126, 92, 0.25);
+            animation: slideDown 0.6s ease-out;
+        }
+        .logo {
+            font-size: 1.9rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #c27e5c, #b35f3a);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            font-family: 'Playfair Display', serif;
+        }
+        .badge {
+            background: rgba(194, 126, 92, 0.2);
+            padding: 0.25rem 1rem;
+            border-radius: 60px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        /* Hero with enhanced animation */
+        .hero {
+            text-align: center;
+            margin: 1rem 0 3rem;
+            animation: fadeUp 0.8s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+        }
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4.5rem;
+            background: linear-gradient(125deg, #e2956b, #bc6f4a, #f7bc7a);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            margin-bottom: 1rem;
+            letter-spacing: -0.01em;
+            animation: pulseGlow 2s infinite alternate;
+        }
+        @keyframes pulseGlow {
+            0% { text-shadow: 0 0 0px rgba(194,126,92,0); }
+            100% { text-shadow: 0 0 8px rgba(194,126,92,0.3); }
+        }
+        .greeting-sub {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto 1rem;
+            color: #5e4032;
+        }
+        .from-line {
+            background: #fff2e6;
+            display: inline-block;
+            padding: 0.6rem 1.6rem;
+            border-radius: 60px;
+            font-weight: 600;
+            backdrop-filter: blur(2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+        }
+
+        /* section titles with animated underline */
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            font-weight: 600;
+            font-family: 'Playfair Display', serif;
+            margin: 2.8rem 0 1.8rem;
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+        .section-title span {
+            background: linear-gradient(120deg, #e6c9b5, #f7e2d0);
+            padding: 0 0.5rem;
+        }
+        .section-title:after {
+            content: '🐣';
+            margin-left: 12px;
+            font-size: 2rem;
+            animation: bounceSoft 1.5s infinite;
+            display: inline-block;
+        }
+        @keyframes bounceSoft {
+            0%,100%{ transform: translateY(0); }
+            50%{ transform: translateY(-6px); }
+        }
+
+        /* Wishes Grid with stagger animation */
+        .wishes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0 2rem;
+        }
+        .wish-card {
+            background: rgba(255, 248, 240, 0.9);
+            backdrop-filter: blur(3px);
+            border-radius: 2rem;
+            padding: 2rem 1.5rem;
+            box-shadow: 0 20px 30px -12px rgba(0,0,0,0.05);
+            transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            border: 1px solid rgba(255, 225, 200, 0.8);
+            text-align: center;
+            opacity: 0;
+            animation: cardFadeIn 0.6s forwards;
+            animation-delay: calc(0.1s * var(--i, 1));
+        }
+        .wish-card:nth-child(1) { --i: 1; }
+        .wish-card:nth-child(2) { --i: 2; }
+        .wish-card:nth-child(3) { --i: 3; }
+        @keyframes cardFadeIn {
+            to { opacity: 1; transform: translateY(0); }
+            from { opacity: 0; transform: translateY(25px); }
+        }
+        .wish-card:hover {
+            transform: translateY(-10px) scale(1.01);
+            background: white;
+            box-shadow: 0 32px 38px -16px rgba(95, 52, 29, 0.2);
+            border-color: #fad1b0;
+        }
+        .card-icon {
+            font-size: 3.2rem;
+            margin-bottom: 1rem;
+            transition: transform 0.2s;
+        }
+        .wish-card:hover .card-icon {
+            transform: rotate(6deg) scale(1.05);
+        }
+
+        /* Easter Countdown Section (new) */
+        .countdown-section {
+            background: linear-gradient(135deg, #fff1e4, #ffe6d6);
+            border-radius: 2.5rem;
+            padding: 1.8rem 1.5rem;
+            margin: 2.5rem 0;
+            text-align: center;
+            box-shadow: 0 12px 22px rgba(0,0,0,0.05);
+            border: 1px solid #ffdec8;
+            transition: all 0.3s;
+        }
+        .countdown-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #b3613b;
+        }
+        .timer {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        .time-block {
+            background: #fffcf5;
+            border-radius: 1.5rem;
+            padding: 0.8rem 1.2rem;
+            min-width: 90px;
+            box-shadow: 0 8px 14px rgba(0,0,0,0.02);
+            transition: transform 0.2s;
+        }
+        .time-number {
+            font-size: 2.6rem;
+            font-weight: 800;
+            font-family: monospace;
+            color: #ca7a51;
+            line-height: 1;
+        }
+        .time-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #8c614b;
+        }
+
+        /* Easter Joy Gallery (new) */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.8rem;
+            margin: 2rem 0;
+        }
+        .joy-card {
+            background: #fffaf4;
+            border-radius: 1.8rem;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            border-bottom: 3px solid #f3cba5;
+            animation: fadeUp 0.7s ease-out;
+            transform-origin: center;
+        }
+        .joy-card:hover {
+            transform: scale(1.02) translateY(-5px);
+            background: #ffffff;
+            box-shadow: 0 20px 28px -12px rgba(0,0,0,0.1);
+            border-bottom-color: #dd9f72;
+        }
+        .joy-emoji {
+            font-size: 2.8rem;
+            display: inline-block;
+            animation: wiggle 2s infinite ease;
+        }
+        @keyframes wiggle {
+            0%,100%{ transform: rotate(0deg); }
+            25%{ transform: rotate(8deg); }
+            75%{ transform: rotate(-6deg); }
+        }
+        .joy-card h4 {
+            margin: 0.8rem 0 0.5rem;
+            color: #ad6844;
+        }
+
+        /* Interactive Eggs area - enhanced animations */
+        .egg-interactive {
+            background: rgba(253, 241, 230, 0.9);
+            border-radius: 3rem;
+            padding: 2rem 1.8rem;
+            margin: 2.5rem 0;
+            border: 1px solid #ffe1ca;
+            transition: box-shadow 0.3s;
+        }
+        .eggs-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+        }
+        .magic-egg {
+            background: radial-gradient(circle at 35% 30%, #fff, #fae6d4);
+            width: 140px;
+            height: 170px;
+            border-radius: 50% / 45% 45% 55% 55%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.25s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            box-shadow: 0 12px 18px -6px rgba(0,0,0,0.1);
+            border: 2px solid #ffe2ca;
+            animation: softFloatEgg 3s infinite ease-in-out;
+        }
+        @keyframes softFloatEgg {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-6px); }
+            100% { transform: translateY(0px); }
+        }
+        .magic-egg:hover {
+            animation: none;
+            transform: scale(1.04) translateY(-8px);
+            background: radial-gradient(circle at 35% 30%, #fff9f0, #ffefdf);
+            box-shadow: 0 18px 26px -8px rgba(160, 85, 45, 0.3);
+        }
+        .magic-egg:active {
+            transform: scale(0.97);
+        }
+        .egg-message-area {
+            background: #fff0e3;
+            border-radius: 2rem;
+            padding: 1.2rem;
+            text-align: center;
+            margin-top: 1.5rem;
+            font-weight: 500;
+            transition: all 0.2s;
+            border-left: 6px solid #e9b282;
+        }
+
+        /* additional new wishes from wizdev */
+        .special-note {
+            background: linear-gradient(112deg, #fdf1e5, #fff6ec);
+            border-radius: 2rem;
+            padding: 1.6rem;
+            margin: 1rem 0 2rem;
+            text-align: center;
+            border: 1px dashed #e6bc99;
+            animation: borderPulse 3s infinite;
+        }
+        @keyframes borderPulse {
+            0% { border-color: #e6bc99; }
+            50% { border-color: #f3cfaf; box-shadow: 0 0 0 4px rgba(243, 188, 128, 0.1); }
+            100% { border-color: #e6bc99; }
+        }
+
+        .footer {
+            margin-top: 4rem;
+            padding-top: 2rem;
+            text-align: center;
+            border-top: 1px solid #f1dbc8;
+        }
+        .footer-social i {
+            font-size: 1.4rem;
+            margin: 0 12px;
+            color: #b27655;
+            transition: all 0.2s;
+        }
+        .footer-social i:hover {
+            color: #824f34;
+            transform: translateY(-3px);
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 760px) {
+            .hero h1 { font-size: 2.8rem; }
+            .time-number { font-size: 1.8rem; }
+            .time-block { min-width: 70px; }
+            .magic-egg { width: 110px; height: 135px; }
+        }
+    </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="container nav-container">
-            <a href="index.html" class="logo">
-                <span class="logo-text">TAYLON</span>
-                <span class="logo-subtext">BRANDS</span>
-            </a>
-            
-            <button class="menu-toggle" id="menuToggle">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            
-            <ul class="nav-menu" id="navMenu">
-                <li><a href="index.html" class="active">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="services.html">Services</a></li>
-                <li><a href="portfolio.html">Portfolio</a></li>
-                <li><a href="team.html">Team</a></li>
-                <li><a href="testimonials.html">Testimonials</a></li>
-                <li><a href="blog.html">Blog</a></li>
-                <li><a href="careers.html">Careers</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
+<div class="floating-bg" id="floatingBg"></div>
+<div class="container">
+    <header class="site-header">
+        <div class="logo-area">
+            <span class="logo">WizDev</span>
+            <span class="badge"><i class="fas fa-feather-alt"></i> easter magic edition</span>
         </div>
-    </nav>
+        <div class="header-emoji">🐇✨🌸</div>
+    </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-overlay"></div>
-        <div class="container">
-            <div class="hero-content">
-                <h1 class="hero-title">Elevating Brands <span class="gold-accent">Beyond Expectations</span></h1>
-                <p class="hero-subtitle">TAYLON Brands creates distinctive brand identities that resonate, engage, and endure in today's competitive marketplace.</p>
-                <div class="hero-buttons">
-                    <a href="contact.html" class="btn btn-primary">Start Your Project</a>
-                    <a href="portfolio.html" class="btn btn-secondary">View Our Work</a>
-                </div>
-            </div>
+    <main>
+        <div class="hero">
+            <h1>Happy Easter, dear viewer</h1>
+            <p class="greeting-sub">Where creativity meets spring’s gentle bloom — warm wishes from our team to you.</p>
+            <div class="from-line"><i class="fas fa-heart"></i> WizDev family <i class="fas fa-laptop-code"></i>  sends you joy & renewal</div>
         </div>
-    </section>
 
-    <!-- Services Preview -->
-    <section class="section services-preview">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Our <span class="gold-accent">Branding Services</span></h2>
-                <p class="section-subtitle">Comprehensive branding solutions tailored to your business needs</p>
+        <!-- Main Easter wishes from WizDev -->
+        <div class="section-title"><span>WizDev's heartfelt blessings</span></div>
+        <div class="wishes-grid">
+            <div class="wish-card"><div class="card-icon">🌱✨</div><h3>Renewal</h3><p>Let every line of your story be filled with hope. WizDev wishes you a fresh start this Easter.</p></div>
+            <div class="wish-card"><div class="card-icon">🍫💻</div><h3>Sweet success</h3><p>May your days be as delightful as chocolate eggs and your projects run smoother than ever.</p></div>
+            <div class="wish-card"><div class="card-icon">🌈🐣</div><h3>Endless wonder</h3><p>From creative sparks to quiet moments, we celebrate you. Happy Easter with love from WizDev.</p></div>
+        </div>
+
+        <!-- NEW: Easter Countdown with dynamic calculation -->
+        <div class="countdown-section">
+            <div class="countdown-title"><i class="far fa-clock"></i> Easter countdown — anticipation of joy</div>
+            <div class="timer" id="easterTimer">
+                <div class="time-block"><div class="time-number" id="days">00</div><div class="time-label">Days</div></div>
+                <div class="time-block"><div class="time-number" id="hours">00</div><div class="time-label">Hours</div></div>
+                <div class="time-block"><div class="time-number" id="minutes">00</div><div class="time-label">Minutes</div></div>
+                <div class="time-block"><div class="time-number" id="seconds">00</div><div class="time-label">Seconds</div></div>
             </div>
-            
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-bullseye"></i>
-                    </div>
-                    <h3>Brand Strategy</h3>
-                    <p>Developing comprehensive brand positioning and messaging frameworks.</p>
-                    <a href="services.html#strategy" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-palette"></i>
-                    </div>
-                    <h3>Visual Identity</h3>
-                    <p>Crafting memorable logos, color palettes, typography, and visual systems.</p>
-                    <a href="services.html#visual" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <h3>Brand Marketing</h3>
-                    <p>Strategic campaigns to launch and grow your brand in the market.</p>
-                    <a href="services.html#marketing" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-digital-tachograph"></i>
-                    </div>
-                    <h3>Digital Presence</h3>
-                    <p>Creating cohesive brand experiences across all digital platforms.</p>
-                    <a href="services.html#digital" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
-                </div>
+            <p style="margin-top: 1rem; font-size: 0.85rem;">🌸 The season of new beginnings is almost here</p>
+        </div>
+
+        <!-- NEW: Easter Joy Gallery (more content + animations) -->
+        <div class="section-title"><span>Joyful traditions & spring moments</span></div>
+        <div class="gallery-grid">
+            <div class="joy-card"><div class="joy-emoji">🐰🌷</div><h4>Bunny whispers</h4><p>Easter bunnies bring tales of kindness and surprise — may you feel the magic.</p></div>
+            <div class="joy-card"><div class="joy-emoji">🥚🎨</div><h4>Egg painting</h4><p>Each painted egg tells a story of creativity. Celebrate your unique colors.</p></div>
+            <div class="joy-card"><div class="joy-emoji">🌼🌞</div><h4>Spring equinox</h4><p>Balance, light and new energy. Let this Easter recharge your spirit.</p></div>
+            <div class="joy-card"><div class="joy-emoji">🍃✨</div><h4>WizDev tradition</h4><p>We code with heart — this Easter we gift you our warmest wishes of success.</p></div>
+        </div>
+
+        <!-- Interactive Secret Eggs (enhanced) -->
+        <div class="egg-interactive">
+            <div style="text-align:center; margin-bottom:1rem;"><i class="fas fa-magic"></i> <strong>Tap an egg — a hidden WizDev blessing emerges</strong> <i class="fas fa-egg"></i></div>
+            <div class="eggs-container">
+                <div class="magic-egg" data-wish="🌟 'Innovation is like an egg — fragile at first, but full of life. WizDev wishes you breakthrough ideas and fearless creation!'"><i class="fas fa-pastafarianism"></i><span>Golden egg</span></div>
+                <div class="magic-egg" data-wish="🌺 'Like a blooming garden, may your opportunities blossom. We are grateful for you — Happy Easter from all of us at WizDev.'"><i class="fas fa-seedling"></i><span>Spring egg</span></div>
+                <div class="magic-egg" data-wish="🐇 'May your code compile, your coffee be warm, and your heart be light. Wishing you an egg-straordinary Easter!'"><i class="fas fa-bunny"></i><span>Bunny egg</span></div>
             </div>
-            
-            <div class="text-center">
-                <a href="services.html" class="btn btn-outline">View All Services</a>
+            <div class="egg-message-area" id="eggMessageDisplay">
+                <i class="fas fa-gift"></i> Click any magical egg — receive a secret Easter wish from WizDev.
             </div>
         </div>
-    </section>
 
-    <!-- Featured Work -->
-    <section class="section featured-work bg-light">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Featured <span class="gold-accent">Brand Stories</span></h2>
-                <p class="section-subtitle">Discover how we've transformed businesses through strategic branding</p>
-            </div>
-            
-            <div class="portfolio-grid">
-                <div class="portfolio-item">
-                    <div class="portfolio-image">
-                        <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Luxury Hotel Branding">
-                    </div>
-                    <div class="portfolio-content">
-                        <h3>Aurora Hotels</h3>
-                        <p>Complete brand identity for a luxury hotel chain, including visual system, tone of voice, and digital experience.</p>
-                        <a href="portfolio.html#aurora" class="portfolio-link">View Case Study</a>
-                    </div>
-                </div>
-                
-                <div class="portfolio-item">
-                    <div class="portfolio-image">
-                        <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Tech Startup Branding">
-                    </div>
-                    <div class="portfolio-content">
-                        <h3>NexTech Solutions</h3>
-                        <p>Brand strategy and identity for an AI startup, helping them stand out in a competitive technology market.</p>
-                        <a href="portfolio.html#nextech" class="portfolio-link">View Case Study</a>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="text-center">
-                <a href="portfolio.html" class="btn btn-outline">View All Projects</a>
-            </div>
+        <!-- Additional content: special note with more animations -->
+        <div class="special-note">
+            <i class="fas fa-quote-right" style="font-size: 1.8rem; opacity: 0.6; color:#bc7a56;"></i>
+            <p style="font-size:1.1rem; font-weight:500; margin: 0.5rem 0;">"At WizDev, we believe every line of code is a seed of something greater. This Easter, may your projects flourish and your days be filled with light."</p>
+            <p>— The WizDev Creative Studio</p>
+            <div style="margin-top: 0.8rem;"><i class="fas fa-crown"></i>  #EasterWithWizDev  <i class="fas fa-crown"></i></div>
         </div>
-    </section>
+    </main>
 
-    <!-- Why Choose Us -->
-    <section class="section why-us">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Why <span class="gold-accent">Choose TAYLON</span></h2>
-                <p class="section-subtitle">What sets us apart in the world of brand development</p>
-            </div>
-            
-            <div class="features-grid">
-                <div class="feature">
-                    <div class="feature-number gold-accent">01</div>
-                    <h3>Strategic Approach</h3>
-                    <p>We don't just design logos; we develop comprehensive brand ecosystems built on market research and consumer insights.</p>
-                </div>
-                
-                <div class="feature">
-                    <div class="feature-number gold-accent">02</div>
-                    <h3>Multi-Industry Expertise</h3>
-                    <p>With experience across 15+ industries, we bring fresh perspectives and proven methodologies to each project.</p>
-                </div>
-                
-                <div class="feature">
-                    <div class="feature-number gold-accent">03</div>
-                    <h3>End-to-End Service</h3>
-                    <p>From initial concept to final implementation, we guide your brand journey at every step with dedicated support.</p>
-                </div>
-                
-                <div class="feature">
-                    <div class="feature-number gold-accent">04</div>
-                    <h3>Measurable Results</h3>
-                    <p>Our branding solutions deliver tangible ROI through increased recognition, customer loyalty, and market share.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="cta-section">
-        <div class="container">
-            <div class="cta-content">
-                <h2>Ready to Transform Your Brand?</h2>
-                <p>Let's discuss how TAYLON Brands can elevate your business identity. Schedule a complimentary brand consultation today.</p>
-                <a href="contact.html" class="btn btn-primary">Get In Touch</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
     <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-col">
-                    <a href="index.html" class="logo footer-logo">
-                        <span class="logo-text">TAYLON</span>
-                        <span class="logo-subtext">BRANDS</span>
-                    </a>
-                    <p class="footer-about">TAYLON Brands is a premier branding agency dedicated to creating distinctive, memorable brand identities that drive business growth and customer loyalty.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    </div>
-                </div>
-                
-                <div class="footer-col">
-                    <h3>Quick Links</h3>
-                    <ul class="footer-links">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="services.html">Services</a></li>
-                        <li><a href="portfolio.html">Portfolio</a></li>
-                        <li><a href="team.html">Our Team</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-col">
-                    <h3>Services</h3>
-                    <ul class="footer-links">
-                        <li><a href="services.html#strategy">Brand Strategy</a></li>
-                        <li><a href="services.html#visual">Visual Identity</a></li>
-                        <li><a href="services.html#marketing">Brand Marketing</a></li>
-                        <li><a href="services.html#digital">Digital Presence</a></li>
-                        <li><a href="services.html#naming">Brand Naming</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-col">
-                    <h3>Contact Info</h3>
-                    <ul class="footer-contact">
-                        <li><i class="fas fa-map-marker-alt gold-accent"></i> 
-                            <span>Kampala uganda</span>
-                        </li>
-                        <li><i class="fas fa-phone gold-accent"></i> 
-                            <span>+256768683166</span>
-                        </li>
-                        <li><i class="fas fa-envelope gold-accent"></i> 
-                            <span>info@taylonbrands.com</span>
-                        </li>
-                        <li><i class="fas fa-clock gold-accent"></i> 
-                            <span>Mon-Fri: 9am-6pm EST</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="footer-bottom">
-                <p>&copy; <span id="currentYear"></span> TAYLON Brands. All rights reserved. | <a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms of Service</a></p>
-            </div>
+        <div class="footer-social">
+            <i class="fab fa-twitter"></i> <i class="fab fa-linkedin-in"></i> <i class="fab fa-github"></i> <i class="fab fa-instagram"></i>
         </div>
+        <p>© <span id="currentYear"></span> WizDev — Crafting digital experiences with heart & spring magic. <i class="fas fa-egg" style="color:#d68d60;"></i>  Easter blessings to all viewers.</p>
+        <p style="font-size:0.75rem;">spreading hope, innovation, and warmth — happy easter from our family to yours 🐣</p>
     </footer>
+</div>
 
-    <!-- Scripts -->
-    <script src="js/script.js"></script>
+<script>
+    // 1. Floating animated eggs generator (more animations)
+    function createFloatingEggs() {
+        const container = document.getElementById('floatingBg');
+        const eggSymbols = ['🥚', '🐣', '🌸', '🐇', '🌷', '✨', '🍫'];
+        for (let i = 0; i < 22; i++) {
+            const egg = document.createElement('div');
+            egg.classList.add('floating-egg');
+            const size = Math.floor(Math.random() * 30) + 20; // 20-50px
+            egg.style.fontSize = size + 'px';
+            egg.style.left = Math.random() * 100 + '%';
+            egg.style.animationDuration = 14 + Math.random() * 20 + 's';
+            egg.style.animationDelay = Math.random() * 15 + 's';
+            egg.style.opacity = 0.08 + Math.random() * 0.1;
+            egg.innerHTML = eggSymbols[Math.floor(Math.random() * eggSymbols.length)];
+            container.appendChild(egg);
+        }
+    }
+
+    // 2. Easter countdown logic (next Easter Sunday)
+    function getNextEasterSunday() {
+        const year = new Date().getFullYear();
+        // Easter algorithm (computus) - simplified but accurate for modern years
+        const a = year % 19;
+        const b = Math.floor(year / 100);
+        const c = year % 100;
+        const d = Math.floor(b / 4);
+        const e = b % 4;
+        const f = Math.floor((b + 8) / 25);
+        const g = Math.floor((b - f + 1) / 3);
+        const h = (19 * a + b - d - g + 15) % 30;
+        const i = Math.floor(c / 4);
+        const k = c % 4;
+        const l = (32 + 2 * e + 2 * i - h - k) % 7;
+        const m = Math.floor((a + 11 * h + 22 * l) / 451);
+        const month = Math.floor((h + l - 7 * m + 114) / 31);
+        const day = ((h + l - 7 * m + 114) % 31) + 1;
+        let easterDate = new Date(year, month - 1, day);
+        // If Easter already passed this year, get next year's Easter
+        if (easterDate < new Date()) {
+            const nextYear = year + 1;
+            const a2 = nextYear % 19;
+            const b2 = Math.floor(nextYear / 100);
+            const c2 = nextYear % 100;
+            const d2 = Math.floor(b2 / 4);
+            const e2 = b2 % 4;
+            const f2 = Math.floor((b2 + 8) / 25);
+            const g2 = Math.floor((b2 - f2 + 1) / 3);
+            const h2 = (19 * a2 + b2 - d2 - g2 + 15) % 30;
+            const i2 = Math.floor(c2 / 4);
+            const k2 = c2 % 4;
+            const l2 = (32 + 2 * e2 + 2 * i2 - h2 - k2) % 7;
+            const m2 = Math.floor((a2 + 11 * h2 + 22 * l2) / 451);
+            const month2 = Math.floor((h2 + l2 - 7 * m2 + 114) / 31);
+            const day2 = ((h2 + l2 - 7 * m2 + 114) % 31) + 1;
+            easterDate = new Date(nextYear, month2 - 1, day2);
+        }
+        return easterDate;
+    }
+
+    function updateCountdown() {
+        const easterDate = getNextEasterSunday();
+        const now = new Date();
+        const diff = easterDate - now;
+        if (diff <= 0) {
+            document.getElementById('days').innerText = "00";
+            document.getElementById('hours').innerText = "00";
+            document.getElementById('minutes').innerText = "00";
+            document.getElementById('seconds').innerText = "00";
+            return;
+        }
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff % (86400000)) / (3600000));
+        const minutes = Math.floor((diff % 3600000) / 60000);
+        const seconds = Math.floor((diff % 60000) / 1000);
+        document.getElementById('days').innerText = days < 10 ? '0' + days : days;
+        document.getElementById('hours').innerText = hours < 10 ? '0' + hours : hours;
+        document.getElementById('minutes').innerText = minutes < 10 ? '0' + minutes : minutes;
+        document.getElementById('seconds').innerText = seconds < 10 ? '0' + seconds : seconds;
+    }
+
+    // 3. Interactive eggs magic (with extra animation spark)
+    const eggs = document.querySelectorAll('.magic-egg');
+    const messageBox = document.getElementById('eggMessageDisplay');
+    function initEggs() {
+        eggs.forEach(egg => {
+            egg.addEventListener('click', function(e) {
+                e.stopPropagation();
+                const wishText = this.getAttribute('data-wish');
+                // add a little burst effect
+                this.style.transform = 'scale(0.96)';
+                setTimeout(() => { this.style.transform = ''; }, 120);
+                // change message with fade effect
+                messageBox.style.opacity = '0.5';
+                setTimeout(() => {
+                    if (wishText) {
+                        const decor = ['🌸', '🐣', '✨', '🍫', '💖'][Math.floor(Math.random() * 5)];
+                        messageBox.innerHTML = `<i class="fas fa-star-of-life"></i> ${decor}  ${wishText}  ${decor}`;
+                    } else {
+                        messageBox.innerHTML = `<i class="fas fa-egg"></i>  WizDev sends you peaceful joy — have a magical Easter! 🐇`;
+                    }
+                    messageBox.style.opacity = '1';
+                    messageBox.style.backgroundColor = '#fbe6d4';
+                    setTimeout(() => { messageBox.style.backgroundColor = '#fff0e3'; }, 400);
+                }, 80);
+            });
+            egg.setAttribute('role', 'button');
+            egg.setAttribute('tabindex', '0');
+            egg.addEventListener('keypress', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); egg.click(); } });
+        });
+    }
+
+    // footer year
+    function setYear() {
+        document.getElementById('currentYear').innerText = new Date().getFullYear();
+    }
+
+    // smooth extra animation: parallax / additional touch
+    document.addEventListener('DOMContentLoaded', () => {
+        createFloatingEggs();
+        initEggs();
+        setYear();
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+        // console greeting
+        console.log("%c🐣 WizDev Easter Edition: more animations, more love! 🐇", "color:#ca7a51; font-size:14px;");
+    });
+</script>
 </body>
 </html>
